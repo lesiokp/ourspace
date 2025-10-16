@@ -31,3 +31,13 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server działa na porcie ${port}`);
 });
+
+const path = require('path');
+
+// Dodaj obsługę plików statycznych
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Jeśli adres nie jest endpointem API, wyślij index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
