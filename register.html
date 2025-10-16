@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OurSpace - Rejestracja</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Utwórz konto w OurSpace</h2>
+        <form action="/register" method="POST" class="form-box">
+            <input type="text" name="username" placeholder="Nazwa użytkownika" required>
+            <input type="email" name="email" placeholder="Adres e-mail" required>
+            <input type="password" name="password" placeholder="Hasło" required>
+            <input type="password" name="confirm" placeholder="Powtórz hasło" required>
+            <button type="submit" class="btn register">Zarejestruj się</button>
+        </form>
+        <p class="switch-link">
+            Masz już konto? <a href="login.html">Zaloguj się</a>
+        </p>
+        <p class="back-link">
+            <a href="index.html">Powrót do strony głównej</a>
+        </p>
+    </div>
+</body>
+</html>

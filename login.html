@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OurSpace - Logowanie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Zaloguj się do OurSpace</h2>
+        <form action="/login" method="POST" class="form-box">
+            <input type="text" name="username" placeholder="Nazwa użytkownika" required>
+            <input type="password" name="password" placeholder="Hasło" required>
+            <button type="submit" class="btn login">Zaloguj się</button>
+        </form>
+        <p class="switch-link">
+            Nie masz konta? <a href="register.html">Zarejestruj się</a>
+        </p>
+        <p class="back-link">
+            <a href="index.html">Powrót do strony głównej</a>
+        </p>
+    </div>
+</body>
+</html>

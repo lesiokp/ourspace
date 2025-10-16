@@ -1,0 +1,169 @@
+/* INDEX */
+
+:root {
+    --yellow-main: #FFDE21;
+    --yellow-accent: #FFBF00;
+    --teal: #008080;
+    --gray-dark: #36454F;
+    --background-light: #FAFAF9;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-light);
+    color: var(--gray-dark);
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(
+        rgba(255, 222, 33, 0.85),
+        rgba(255, 191, 0, 0.85)
+    ),
+    url('background.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero .content {
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3.4em;
+    margin-bottom: 0.3em;
+    color: var(--teal);
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: var(--gray-dark);
+    margin-bottom: 2em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+.btn {
+    padding: 0.9em 2em;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    font-size: 1.1em;
+}
+
+.btn.login {
+    background-color: var(--teal);
+    color: white;
+}
+
+.btn.register {
+    background-color: var(--yellow-main);
+    color: var(--gray-dark);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: var(--yellow-accent);
+}
+
+/* LOGIN I REGISTER */
+
+.form-container {
+    max-width: 400px;
+    margin: 6em auto;
+    background-color: white;
+    padding: 2em 2.5em;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(54, 69, 79, 0.15);
+    text-align: center;
+}
+
+.form-container h2 {
+    color: var(--teal);
+    margin-bottom: 1em;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+}
+
+.form-box input {
+    padding: 0.8em;
+    border-radius: 6px;
+    border: 2px solid var(--yellow-main);
+    font-size: 1em;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-box input:focus {
+    border-color: var(--teal);
+    background-color: #fffde8;
+}
+
+.btn {
+    padding: 0.9em 1.4em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn.login {
+    background-color: var(--teal);
+}
+
+.btn.register {
+    background-color: var(--yellow-main);
+    color: var(--gray-dark);
+}
+
+.btn:hover {
+    transform: scale(1.04);
+    background-color: var(--yellow-accent);
+}
+
+.switch-link {
+    margin-top: 1.2em;
+    color: var(--gray-dark);
+}
+
+.switch-link a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.switch-link a:hover {
+    color: var(--yellow-accent);
+}
+
+.back-link {
+    margin-top: 0.5em;
+    color: var(--gray-dark);
+}
+
+.back-link a {
+    color: var(--yellow-main);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link a:hover {
+    color: var(--teal);
+}
