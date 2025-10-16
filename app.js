@@ -1,22 +1,26 @@
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
-app.use(cors()); // pozwala frontendowi na komunikację
 
-// Konfiguracja połączenia z MySQL z .env
+// Udostępniaj statyczne pliki z głównego katalogu
+app.use(express.static(__dirname));
+
+// Połączenie z MySQL
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
-    port: process.env.MYSQL_PORT,
+    port: process.env.MYSQL_PORT
 });
 
-// Przykładowy endpoint sprawdzający połączenie
+// Endpoint testowy — czy działa połączenie z bazą danych
 app.get('/api/status', async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT NOW() AS currentTime');
@@ -26,18 +30,17 @@ app.get('/api/status', async (req, res) => {
     }
 });
 
-// Start serwera
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-    console.log(`Server działa na porcie ${port}`);
+// Endpoint do strony głównej – index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-const path = require('path');
+// Fallback — dla każdego innego nieznanego endpointu wyślij stronę główną (SPA)
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'index.html'));
+});
 
-// Dodaj obsługę plików statycznych
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Jeśli adres nie jest endpointem API, wyślij index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log(`Serwer działa na porcie ${port}`);
 });
