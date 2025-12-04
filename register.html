@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OurSpace - Rejestracja</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo/logo.png">
 </head>
 <body>
     <div class="form-container">
         <h2>Utwórz konto w OurSpace</h2>
-        <form action="/register" method="POST" class="form-box">
+        <form id="registerForm" class="form-box">
             <input type="text" name="username" placeholder="Nazwa użytkownika" required>
             <input type="email" name="email" placeholder="Adres e-mail" required>
             <input type="password" name="password" placeholder="Hasło" required>
@@ -23,5 +24,43 @@
             <a href="index.html">Powrót do strony głównej</a>
         </p>
     </div>
+
+    <script>
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        e.preventDefault(); // Zapobiega przeładowaniu strony i wysyłce na /register.html
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        // Małe sprawdzenie czy hasła są takie same (opcjonalne, ale przydatne)
+        if (data.password !== data.confirm) {
+            alert("Hasła nie są identyczne!");
+            return;
+        }
+
+        try {
+            // Tutaj wysyłamy na /register (bez .html) - tak jak zdefiniowałeś w app.js
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert(result.message);
+                window.location.href = '/login.html'; // Przekierowanie do logowania
+            } else {
+                alert('Błąd: ' + result.message);
+            }
+        } catch (error) {
+            console.error('Błąd:', error);
+            alert('Wystąpił problem z połączeniem z serwerem.');
+        }
+    });
+    </script>
 </body>
 </html>

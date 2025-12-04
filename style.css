@@ -1,169 +1,827 @@
-/* INDEX */
-
-:root {
-    --yellow-main: #FFDE21;
-    --yellow-accent: #FFBF00;
-    --teal: #008080;
-    --gray-dark: #36454F;
-    --background-light: #FAFAF9;
-}
-
+/* =========================================
+   STYLE GLOBALNE
+   ========================================= */
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--background-light);
-    color: var(--gray-dark);
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-.hero {
-    position: relative;
+/* =========================================
+   STRONA STARTOWA
+   ========================================= */
+.landing-container {
     height: 100vh;
-    background: linear-gradient(
-        rgba(255, 222, 33, 0.85),
-        rgba(255, 191, 0, 0.85)
-    ),
-    url('background.jpg') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(135deg, #333 0%, #000 100%);
+    color: #fff;
     text-align: center;
 }
 
-.hero .content {
-    z-index: 2;
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    color: #FFD700; /* Żółty OurSpace */
 }
 
-.hero h1 {
-    font-size: 3.4em;
-    margin-bottom: 0.3em;
-    color: var(--teal);
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ccc;
 }
 
-.hero p {
-    font-size: 1.2em;
-    color: var(--gray-dark);
-    margin-bottom: 2em;
-}
-
-.buttons {
+.cta-buttons {
     display: flex;
+    gap: 20px;
     justify-content: center;
-    gap: 1.5em;
 }
 
-.btn {
-    padding: 0.9em 2em;
-    border-radius: 8px;
-    border: none;
+.btn-large {
+    padding: 15px 40px;
+    font-size: 18px;
     text-decoration: none;
+    border-radius: 30px;
     font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    font-size: 1.1em;
+    transition: transform 0.2s;
 }
 
-.btn.login {
-    background-color: var(--teal);
-    color: white;
+.btn-primary {
+    background-color: #FFD700;
+    color: #333;
 }
 
-.btn.register {
-    background-color: var(--yellow-main);
-    color: var(--gray-dark);
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #FFD700;
+    color: #FFD700;
 }
 
-.btn:hover {
+.btn-large:hover {
     transform: scale(1.05);
-    background-color: var(--yellow-accent);
 }
 
-/* LOGIN I REGISTER */
+/* =========================================
+   PASEK NAWIGACJI (NAVBAR)
+   ========================================= */
+.navbar {
+    background-color: #FFD700; /* Główny żółty kolor */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 50px;
+}
 
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Logo obrazkowe */
+.nav-logo {
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-avatar {
+    cursor: pointer;
+}
+
+.profile-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    object-fit: cover;
+}
+
+/* Przycisk Wyloguj */
+.btn-logout {
+    background-color: #333;
+    color: #FFD700;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+/* =========================================
+   FORMULARZE (LOGIN / REJESTRACJA)
+   ========================================= */
 .form-container {
     max-width: 400px;
-    margin: 6em auto;
-    background-color: white;
-    padding: 2em 2.5em;
-    border-radius: 12px;
-    box-shadow: 0 6px 14px rgba(54, 69, 79, 0.15);
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     text-align: center;
-}
-
-.form-container h2 {
-    color: var(--teal);
-    margin-bottom: 1em;
 }
 
 .form-box {
     display: flex;
     flex-direction: column;
-    gap: 1.2em;
+    gap: 15px;
 }
 
 .form-box input {
-    padding: 0.8em;
-    border-radius: 6px;
-    border: 2px solid var(--yellow-main);
-    font-size: 1em;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-.form-box input:focus {
-    border-color: var(--teal);
-    background-color: #fffde8;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .btn {
-    padding: 0.9em 1.4em;
+    padding: 12px;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
     font-weight: bold;
-    font-size: 1em;
-    color: white;
-    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-.btn.login {
-    background-color: var(--teal);
-}
-
-.btn.register {
-    background-color: var(--yellow-main);
-    color: var(--gray-dark);
+.btn.register, .btn.login, .btn.submit {
+    background-color: #FFD700;
+    color: #333;
 }
 
 .btn:hover {
-    transform: scale(1.04);
-    background-color: var(--yellow-accent);
+    opacity: 0.9;
 }
 
-.switch-link {
-    margin-top: 1.2em;
-    color: var(--gray-dark);
+.switch-link, .back-link {
+    margin-top: 15px;
+    font-size: 14px;
 }
 
-.switch-link a {
-    color: var(--teal);
-    text-decoration: none;
+.switch-link a, .back-link a {
+    color: #333;
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   STRONA GŁÓWNA (FEED)
+   ========================================= */
+.main-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.main-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-left {
+    font-size: 22px;
     font-weight: bold;
 }
 
-.switch-link a:hover {
-    color: var(--yellow-accent);
-}
-
-.back-link {
-    margin-top: 0.5em;
-    color: var(--gray-dark);
-}
-
-.back-link a {
-    color: var(--yellow-main);
-    text-decoration: none;
+#addPostBtn {
+    background-color: #333;
+    color: #FFD700;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
     font-weight: bold;
 }
 
-.back-link a:hover {
-    color: var(--teal);
+/* Karta Posta */
+.posts-list { margin-top: 20px; }
+
+.post-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 1px solid #eee;
+}
+
+.post-info h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+/* Treść posta */
+.post-title {
+    font-size: 1.4em;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #000;
+    line-height: 1.2;
+}
+
+.post-body {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+    white-space: pre-line;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-top: 10px;
+    border: 1px solid #eee;
+}
+
+/* Akcje Posta (Lajki) */
+.post-actions {
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.like-btn:hover { background-color: #f9f9f9; color: #888; }
+.like-btn.liked { color: #e0245e; }
+.like-btn.liked:hover { background-color: rgba(224, 36, 94, 0.1); }
+
+.like-count-span {
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+
+/* =========================================
+   PROFIL UŻYTKOWNIKA
+   ========================================= */
+.profile-main {
+    max-width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.profile-block, .friends-block {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-block { flex: 2; min-width: 300px; }
+.friends-block { flex: 1; min-width: 300px; }
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+#avatarLarge {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #FFD700;
+}
+
+.btn.edit {
+    background-color: #333;
+    color: #fff;
+    margin-top: 10px;
+    font-size: 12px;
+    padding: 8px 16px;
+}
+
+/* Listy znajomych / szukanie */
+.search-bar {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+.search-bar input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.user-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.user-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.search-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+.btn-add { background-color: #FFD700; color: #333; }
+.btn-accept { background-color: #28a745; color: white; }
+
+/* Klikalne imię znajomego */
+.clickable-name {
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.2s, text-decoration 0.2s;
+}
+
+.clickable-name:hover {
+    color: #FFD700; /* Żółty OurSpace */
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MODALE (OKIENKA POPUP)
+   ========================================= */
+/* Stylujemy WSZYSTKIE inputy i textare wewnątrz modala, 
+   niezależnie czy są w .form-group czy nie */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"],
+.modal-content input[type="date"],
+.modal-content textarea,
+.modal-content select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0; /* Odstęp góra/dół */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background: #f9f9f9;
+}
+
+.modal-content textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Przycisk w modalu */
+.modal-content .btn.submit {
+    width: 100%;
+    margin-top: 10px;
+}
+
+   .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #FFD700;
+    padding-bottom: 10px;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+.close-modal:hover { color: #000; }
+
+/* Pola w modalu */
+.form-group { margin-bottom: 15px; }
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Lista lajkujących w modalu */
+.liker-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+.liker-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+.liker-name { font-weight: bold; font-size: 15px; }
+
+
+/* =========================================
+   CZAT
+   ========================================= */
+.chat-container {
+    display: flex;
+    height: calc(100vh - 80px);
+    max-width: 1200px;
+    margin: 10px auto;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Lewy panel */
+.chat-sidebar {
+    width: 300px;
+    flex-shrink: 0; /* Nie kurczy się */
+    background: #f9f9f9;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-sidebar h3 { padding: 20px; margin: 0; border-bottom: 1px solid #eee; background: #fff; }
+
+.friend-chat-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.2s;
+}
+.friend-chat-item:hover { background: #e9e9e9; }
+.friend-chat-item.active { background: #FFD700; font-weight: bold; }
+.friend-chat-item img {
+    width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; object-fit: cover; border: 1px solid #ccc;
+}
+
+/* Prawy panel */
+.chat-main {
+    flex: 1;
+    min-width: 0; /* Zapobiega rozpychaniu */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.chat-header {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+.chat-header img { width: 35px; height: 35px; border-radius: 50%; margin-right: 10px; object-fit: cover; }
+
+.messages-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* WIERSZE WIADOMOŚCI (Awatar + Dymek) */
+.msg-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+/* Wysłane przeze mnie */
+.row-sent {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+.row-sent .msg-bubble {
+    background-color: #FFD700;
+    color: #333;
+    border-bottom-right-radius: 4px;
+}
+
+/* Odebrane */
+.row-received {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.row-received .msg-bubble {
+    background-color: #f1f1f1;
+    color: #333;
+    border-bottom-left-radius: 4px;
+}
+
+.msg-avatar-small {
+    width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; flex-shrink: 0;
+}
+
+.msg-bubble {
+    max-width: 60%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.msg-img {
+    max-width: 100%;
+    max-height: 300px;
+    width: auto;
+    border-radius: 10px;
+    margin-top: 5px;
+    display: block;
+    cursor: pointer;
+}
+
+/* Formularz wysyłania */
+.message-form {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+}
+.message-form input[type="text"] {
+    flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 20px; outline: none;
+}
+.btn-send {
+    background: #333; color: #FFD700; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold;
+}
+.file-upload-icon { font-size: 24px; cursor: pointer; padding: 5px; }
+
+/* --- STYLIZACJA KOSZA I KOMENTARZY --- */
+
+/* Kontener nagłówka musi być relative, żeby pozycjonować kosz */
+.post-header {
+    position: relative; 
+}
+
+/* Przycisk usuwania (Kosz) */
+.delete-post-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+}
+.delete-post-btn:hover {
+    color: red;
+}
+
+/* Przycisk "Komentarze" */
+.comment-trigger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+    margin-left: 15px;
+    text-decoration: underline;
+}
+
+/* Sekcja komentarzy (domyślnie ukryta) */
+.comments-section {
+    display: none;
+    margin-top: 15px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    border-top: 1px solid #eee;
+}
+
+.comments-list {
+    margin-bottom: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.comment-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    align-items: flex-start;
+}
+
+.comment-avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-content {
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    flex: 1;
+}
+
+.comment-content-block {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.comment-author {
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 5px;
+    color: #333;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.comment-bubble {
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.comment-text {
+    color: #444;
+    word-wrap: break-word;
+}
+
+.comment-meta {
+    font-size: 11px;
+    color: #999;
+    margin-top: 4px;
+    margin-left: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Formularz dodawania komentarza */
+.add-comment-form {
+    display: flex;
+    gap: 5px;
+}
+.add-comment-form input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 13px;
+}
+.btn-comment-submit {
+    background: #333;
+    color: #FFD700;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Formularz usuwania komentarza */
+.delete-comment-x {
+    color: #ccc;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.delete-comment-x:hover {
+    color: red;
 }

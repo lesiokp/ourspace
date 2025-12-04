@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OurSpace - Logowanie</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo/logo.png">
 </head>
 <body>
     <div class="form-container">
         <h2>Zaloguj się do OurSpace</h2>
-        <form action="/login" method="POST" class="form-box">
-            <input type="text" name="username" placeholder="Nazwa użytkownika" required>
+        <form id="loginForm" class="form-box">
+            <input type="email" name="email" placeholder="Adres e-mail" required>
             <input type="password" name="password" placeholder="Hasło" required>
             <button type="submit" class="btn login">Zaloguj się</button>
         </form>
@@ -21,5 +22,44 @@
             <a href="index.html">Powrót do strony głównej</a>
         </p>
     </div>
+
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                // 1. Zapisujemy dane użytkownika w pamięci przeglądarki
+                // Dzięki temu home.html będzie wiedział, kto wszedł.
+                const userData = {
+                    id: result.userId,
+                    username: result.username
+                    // Avatar pobierzemy później, na razie wystarczy ID i nazwa
+                };
+                localStorage.setItem('user', JSON.stringify(userData));
+
+                // 2. Przekierowanie na stronę główną
+                alert('Zalogowano pomyślnie!');
+                window.location.href = '/home.html';
+            } else {
+                alert('Błąd logowania: ' + result.message);
+            }
+        } catch (error) {
+            console.error('Błąd:', error);
+            alert('Wystąpił problem z serwerem.');
+        }
+    });
+    </script>
 </body>
 </html>

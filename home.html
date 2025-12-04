@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OurSpace - Strona główna</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo/logo.png">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <span class="logo">OurSpace</span>
+        </div>
+        <div class="navbar-center">
+            <a href="messages.html" class="nav-link">Wiadomości</a>
+        </div>
+        <div class="navbar-right">
+            <span class="user-name" id="userName">Wczytywanie...</span>
+            
+            <div class="profile-avatar" id="profileAvatar" onclick="goToProfile()">
+                <img id="avatarImg" src="https://via.placeholder.com/40" alt="Avatar">
+            </div>
+            <button class="btn-logout" onclick="localStorage.removeItem('user'); window.location.href='login.html'">Wyloguj</button>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="main-top">
+            <span class="main-left">Aktualności</span>
+            <button class="main-right" id="addPostBtn">Dodaj post</button>
+        </div>
+
+        <div id="addPostModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeModalBtn">&times;</span>
+                <h3>Dodaj nowy post</h3>
+                <form id="postForm" enctype="multipart/form-data">
+                    <input type="text" id="postTitle" placeholder="Tytuł" required>
+                    <textarea id="postDescription" placeholder="Opis" required></textarea>
+                    <input type="file" name="image" id="postImage" accept="image/*">
+                    <button type="submit" class="btn submit">Opublikuj</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="postsList" class="posts-list">
+            <p>Tutaj wkrótce pojawią się posty...</p>
+        </div>
+    </main>
+
+    <div id="likesModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeLikesModal">&times;</span>
+        <h3>To lubią:</h3>
+        <div id="likesListContainer">
+            </div>
+    </div>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>

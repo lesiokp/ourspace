@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>OurSpace - Wiadomości</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo/logo.png">
+</head>
+<body>
+<header class="navbar">
+    <div class="navbar-left"><span class="logo">OurSpace</span></div>
+    <div class="navbar-center">
+        <a href="home.html" class="nav-link">Strona główna</a>
+        <a href="profile.html" class="nav-link">Profil</a>
+    </div>
+    <div class="navbar-right">
+        <span class="user-name" id="navUserName">...</span>
+        <div class="profile-avatar" onclick="window.location.href='profile.html'">
+            <img id="navUserAvatar" src="https://via.placeholder.com/40" alt="Avatar">
+        </div>
+        <button class="btn-logout" onclick="localStorage.removeItem('user'); window.location.href='login.html'">Wyloguj</button>
+    </div>
+</header>
+
+    <div class="chat-container">
+        <aside class="chat-sidebar">
+            <h3>Twoi znajomi</h3>
+            <ul id="chatFriendsList" class="friend-list-chat">
+                <li style="padding:10px; color:#888;">Ładowanie...</li>
+            </ul>
+        </aside>
+
+        <main class="chat-main">
+            <div class="chat-header" id="chatHeader" style="display:none;">
+                <img src="" id="chatHeaderAvatar" alt="">
+                <h4 id="chatHeaderName">Wybierz znajomego</h4>
+            </div>
+
+            <div id="messagesArea" class="messages-area">
+                <div class="empty-chat-state">
+                    <p> Wybierz osobę z listy po lewej, aby rozpocząć czat.</p>
+                </div>
+            </div>
+
+            <form id="messageForm" class="message-form" style="display:none;">
+                <label for="msgFile" class="file-upload-icon" title="Wyślij zdjęcie">📷</label>
+                <input type="file" id="msgFile" accept="image/*" style="display:none;">
+                
+                <input type="text" id="msgInput" placeholder="Napisz wiadomość..." autocomplete="off">
+                <button type="submit" class="btn-send">Wyślij</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="messages.js"></script>
+</body>
+</html>

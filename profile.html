@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>OurSpace - Profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo/logo.png">
+</head>
+<body>
+<header class="navbar">
+        <div class="navbar-left">
+            <span class="logo">OurSpace</span>
+        </div>
+        <div class="navbar-center">
+            <a href="home.html" class="nav-link">Strona główna</a>
+            <a href="messages.html" class="nav-link">Wiadomości</a>
+        </div>
+        <div class="navbar-right">
+            <span class="user-name" id="userName">...</span>
+            
+            <div class="profile-avatar">
+                <img id="avatarImg" src="https://via.placeholder.com/40" alt="Avatar">
+            </div>
+
+            <button class="btn-logout" onclick="localStorage.removeItem('user'); window.location.href='login.html'">Wyloguj</button>
+        </div>
+    </header>
+   <main class="profile-main">
+    <section class="profile-block">
+        <div class="profile-header">
+            <div class="profile-img-wrapper">
+                <img src="uploads/default.png" onerror="this.src='https://via.placeholder.com/150'" alt="Zdjęcie profilowe" id="avatarLarge">
+            </div>
+            <div class="profile-details">
+                <h2 id="usernameDisplay">Ładowanie...</h2>
+                <p id="profileBio">Brak opisu.</p>
+                <button class="btn edit" id="editProfileBtn">Edytuj profil</button>
+            </div>
+        </div>
+        <div class="profile-extra">
+            <div><strong>Lokalizacja:</strong> <span id="profileLocation">-</span></div>
+            <div><strong>Data urodzenia:</strong> <span id="profileBirthdate">-</span></div>
+        </div>
+    </section>
+
+    <section class="friends-block">
+        
+        <div class="search-people-section">
+            <h3>Znajdź znajomych</h3>
+            <div class="search-bar">
+                <input type="text" id="userSearchInput" placeholder="Wpisz imię...">
+                <button id="searchBtn">Szukaj</button>
+            </div>
+            <ul id="searchResultsList" class="user-list">
+                </ul>
+        </div>
+
+        <hr>
+
+        <div class="friend-invites" id="invitesSection" style="display:none;">
+            <h4>Otrzymane zaproszenia</h4>
+            <ul id="friendRequestsList" class="user-list"></ul>
+        </div>
+
+        <div class="friend-list-section">
+            <h4>Twoi znajomi</h4>
+            <ul id="friendsList" class="user-list">
+                </ul>
+        </div>
+    </section>
+</main>
+    <div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeEditModal">&times;</span>
+        <h3>Edytuj profil</h3>
+        
+        <form id="editProfileForm" autocomplete="off">
+            
+            <div class="form-group">
+                <label for="editBio">Opis</label>
+                <textarea id="editBio" placeholder="Napisz coś o sobie..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="editLocation">Lokalizacja</label>
+                <input type="text" id="editLocation" name="new-location" placeholder="Np. Warszawa">
+            </div>
+
+            <div class="form-group">
+                <label for="editBirthdate">Data urodzenia</label>
+                <input type="date" id="editBirthdate">
+            </div>
+
+            <div class="form-group">
+                <label for="editAvatar">Zmień zdjęcie profilowe</label>
+                <input type="file" id="editAvatar" accept="image/*">
+            </div>
+
+            <button type="submit" class="btn submit">Zapisz zmiany</button>
+        </form>
+    </div>
+</div>
+    <script src="profile.js"></script>
+</body>
+</html>
